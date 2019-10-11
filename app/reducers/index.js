@@ -6,10 +6,9 @@ const ADD_CANDY = 'ADD_CANDY';
 
 //thunk type
 export const getCandyFromDatabase = () => {
-  return async (dispatch, axios) => {
-    console.log(axios);
+  return async (dispatch, getState, { axios }) => {
     try {
-      const { data } = await axios.get('./candies');
+      const { data } = await axios.get('./api/candies');
       dispatch(getCandy(data));
     } catch (error) {
       console.log(error);
