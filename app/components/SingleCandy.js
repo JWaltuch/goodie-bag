@@ -16,6 +16,12 @@ class SingleCandy extends React.Component {
         This is the page for your:
         <h1>{this.props.candy.name}</h1>
         <p>{this.props.candy.description}</p>
+        <button type="submit" name="increase">
+          Get More Candy!
+        </button>
+        <button type="submit" name="decrease">
+          Eat a Candy!
+        </button>
       </div>
     );
   }
