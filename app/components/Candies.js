@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getCandyFromDatabase } from '../reducers';
-import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, NavLink } from 'react-router-dom';
 
 class Candies extends React.Component {
   constructor(props) {
@@ -19,7 +19,9 @@ class Candies extends React.Component {
           {this.props.candies.map(candy => {
             return (
               <li key={candy.id}>
-                <h3>{candy.name}</h3>
+                <NavLink to={`/candies/${candy.id}`}>
+                  <h3>{candy.name}</h3>
+                </NavLink>
                 <div>{candy.description}</div>
               </li>
             );

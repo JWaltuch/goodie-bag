@@ -1,6 +1,6 @@
 import React from 'react';
 import CandiesContainer from './Candies';
-import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
 
 const Root = () => {
   return (
@@ -17,7 +17,13 @@ const Root = () => {
         <main>
           <h1>Welcome to the Goodie Bag!</h1>
           <p>What a nice home page for your goodies!</p>
-          <Route path="/candies" component={CandiesContainer} />
+          <Switch>
+            <Route exact path="/candies" component={CandiesContainer} />
+            <Route
+              path="/candies/:id"
+              component={() => <SingleCandy id={req.params.id} />}
+            />
+          </Switch>
         </main>
       </div>
     </BrowserRouter>
