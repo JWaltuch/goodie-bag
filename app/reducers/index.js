@@ -29,7 +29,7 @@ export const getCandyFromDatabase = () => {
 export const getSingleCandyFromDatabase = id => {
   return async (dispatch, getState, { axios }) => {
     try {
-      const { data } = await axios.get(`./api/candies/${id}`);
+      const { data } = await axios.get(`/api/candies/${id}`);
       dispatch(getSingleCandy(data));
     } catch (error) {
       console.log(error);

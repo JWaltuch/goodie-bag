@@ -20,11 +20,7 @@ const Root = () => {
           <p>What a nice home page for your goodies!</p>
           <Switch>
             <Route exact path="/candies" component={CandiesConnector} />
-            <Route
-              exact
-              path="/candies/:id"
-              component={() => <SingleCandyConnector id={id} />}
-            />
+            <Route path="/candies/:id" component={SingleCandyConnector} />
           </Switch>
         </main>
       </div>

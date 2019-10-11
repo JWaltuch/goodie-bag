@@ -7,7 +7,8 @@ class SingleCandy extends React.Component {
     super(props);
   }
   componentDidMount() {
-    this.props.getACandy(this.props.id);
+    console.log(this.props.match);
+    this.props.getACandy(this.props.match.params.id);
   }
 
   render() {
