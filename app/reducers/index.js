@@ -18,7 +18,7 @@ const getSingleCandy = candy => ({
 export const getCandyFromDatabase = () => {
   return async (dispatch, getState, { axios }) => {
     try {
-      const { data } = await axios.get('./api/candies');
+      const { data } = await axios.get('/api/candies');
       dispatch(getCandy(data));
     } catch (error) {
       console.log(error);

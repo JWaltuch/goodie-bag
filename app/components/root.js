@@ -23,7 +23,7 @@ const Root = () => {
             <Route
               exact
               path="/candies/:id"
-              component={() => <SingleCandyConnector id={req.params.id} />}
+              component={() => <SingleCandyConnector id={id} />}
             />
           </Switch>
         </main>
