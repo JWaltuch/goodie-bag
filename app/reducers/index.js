@@ -4,6 +4,14 @@ import { combineReducers } from 'redux';
 const GET_CANDY = 'GET_CANDY';
 const ADD_CANDY = 'ADD_CANDY';
 
+//thunk type
+const GET_CANDY_FROM_DATABASE = () => {
+  return async dispatch => {
+    const { data } = await axios.get('./candies');
+    dispatch(getCandy(data));
+  };
+};
+
 //action creator
 const addCandy = candy => {
   type: ADD_CANDY, candy;
