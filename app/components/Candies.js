@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCandyFromDatabase } from '../store';
+import { getCandyFromDatabase } from '../reducers';
 
 class Candies extends React.Component {
   constructor({ candies }) {

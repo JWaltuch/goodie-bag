@@ -6,9 +6,14 @@ const ADD_CANDY = 'ADD_CANDY';
 
 //thunk type
 export const getCandyFromDatabase = () => {
-  return async dispatch => {
-    const { data } = await axios.get('./candies');
-    dispatch(getCandy(data));
+  return async (dispatch, axios) => {
+    console.log(axios);
+    try {
+      const { data } = await axios.get('./candies');
+      dispatch(getCandy(data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -41,4 +46,6 @@ const candyReducer = (state = initialState, action) => {
   }
 };
 
-export default reducer = combineReducers({ rootReducer, candyReducer });
+const reducer = combineReducers({ rootReducer, candyReducer });
+
+export default reducer;
