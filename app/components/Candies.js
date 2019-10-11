@@ -2,17 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getCandies } from '../store';
 
-class Candies extends React.Component{
-  constructor(props){
-    super(props)
+class Candies extends React.Component {
+  constructor({ candies }) {
+    super(candies);
   }
-  componentDidMount(){
+  componentDidMount() {
     this.props.getCandies();
   }
-  render(){
-  return({candy.map((candy)=> {(<li>{candy.name}</li>)})})
+  render() {
+    return (
+      <ul>
+        {candies.map(candy => {
+          <li>{candy.name}</li>;
+        })}
+      </ul>
+    );
   }
-};
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -20,8 +26,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = store => {
+  return { candies: state.candies };
+};
+
 const CandiesConnector = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Candies);
 
