@@ -17,14 +17,16 @@ export const getCandyFromDatabase = () => {
 };
 
 //action creator
-const addCandy = candy => {
-  type: ADD_CANDY, candy;
-};
-const getCandy = candies => {
-  type: GET_CANDY, candies;
-};
+const addCandy = candy => ({
+  type: ADD_CANDY,
+  candy,
+});
+const getCandy = candies => ({
+  type: GET_CANDY,
+  candies,
+});
 
-const initialState = {};
+const initialState = { candies: [] };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {

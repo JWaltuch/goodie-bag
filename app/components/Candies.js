@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getCandyFromDatabase } from '../reducers';
 
+let candies = [];
+
 class Candies extends React.Component {
-  constructor({ candies }) {
-    super(candies);
-  }
-  componentWillMount() {
+  componentDidMount() {
     this.props.getCandies();
   }
 
