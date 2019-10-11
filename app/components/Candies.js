@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import { getCandyFromDatabase } from '../reducers';
 
 class Candies extends React.Component {
-  constructor({ candies }) {
-    super(candies);
+  constructor(props) {
+    super(props);
   }
   componentDidMount() {
+    console.log('mounting');
     this.props.getCandies();
   }
 
   render() {
     return (
       <ul>
-        {this.candies &&
-          this.candies.map(candy => {
-            <li>{candy.name}</li>;
-          })}
+        {this.props.candies.map(candy => {
+          return <li>{candy.name}</li>;
+        })}
       </ul>
     );
   }
@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  return { candies: state.candies };
+  return { candies: state.candyReducer.candies };
 };
 
 const CandiesConnector = connect(
