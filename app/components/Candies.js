@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCandies } from '../store';
+import { getCandyFromDatabase } from '../store';
 
 class Candies extends React.Component {
   constructor({ candies }) {
     super(candies);
   }
-  componentDidMount() {
+  componentWillMount() {
     this.props.getCandies();
   }
+
   render() {
     return (
       <ul>
@@ -22,7 +23,7 @@ class Candies extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCandies: () => dispatch(getCandies()),
+    getCandies: () => dispatch(getCandyFromDatabase()),
   };
 };
 
