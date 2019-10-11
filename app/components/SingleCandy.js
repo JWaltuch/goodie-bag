@@ -7,15 +7,15 @@ class SingleCandy extends React.Component {
     super(props);
   }
   componentDidMount() {
-    console.log(this.props.match);
     this.props.getACandy(this.props.match.params.id);
   }
 
   render() {
     return (
       <div>
-        <h3>{this.props.candy.name}</h3>
-        <div>{this.props.candy.description}</div>
+        This is the page for your:
+        <h1>{this.props.candy.name}</h1>
+        <p>{this.props.candy.description}</p>
       </div>
     );
   }
