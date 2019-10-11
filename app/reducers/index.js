@@ -14,7 +14,7 @@ const getSingleCandy = candy => ({
   candy,
 });
 
-//thunk type
+//thunk creator
 export const getCandyFromDatabase = () => {
   return async (dispatch, getState, { axios }) => {
     try {
@@ -37,7 +37,7 @@ export const getSingleCandyFromDatabase = id => {
   };
 };
 
-const initialState = { candies: [], selected_candy: {} };
+const initialState = { candies: [], selectedCandy: {} };
 
 const rootReducer = (state = {}, action) => {
   switch (action.type) {
@@ -51,9 +51,7 @@ const candyReducer = (state = initialState, action) => {
     case GET_CANDY:
       return { ...state, candies: action.candies };
     case GET_SINGLE_CANDY:
-      return { ...state, selected_candy: action.candy };
-    case ADD_CANDY:
-      //functionality to add a candy
+      return { ...state, selectedCandy: action.candy };
       return state;
     default:
       return state;
