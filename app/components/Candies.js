@@ -14,10 +14,11 @@ class Candies extends React.Component {
   render() {
     return (
       <ul>
+        You Currently Have:
         {this.props.candies.map(candy => {
           return (
             <li key={candy.id}>
-              <strong>{candy.name}</strong>
+              <h3>{candy.name}</h3>
               <div>{candy.description}</div>
             </li>
           );
