@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getCandyFromDatabase } from '../reducers';
 
-let candies = [];
-
 class Candies extends React.Component {
+  constructor({ candies }) {
+    super(candies);
+  }
   componentDidMount() {
     this.props.getCandies();
   }
@@ -12,9 +13,10 @@ class Candies extends React.Component {
   render() {
     return (
       <ul>
-        {candies.map(candy => {
-          <li>{candy.name}</li>;
-        })}
+        {this.candies &&
+          this.candies.map(candy => {
+            <li>{candy.name}</li>;
+          })}
       </ul>
     );
   }
