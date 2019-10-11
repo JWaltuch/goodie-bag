@@ -9,7 +9,7 @@
 }
 
 body::after {
-  content: "";
+  content: '';
   background: url('bg.jpg');
   opacity: 0.1;
   top: 0;
@@ -21,6 +21,7 @@ body::after {
 }
 
 nav {
+  justify-content: space-evenly;
   align-items: center;
   background-color: #333333;
   color: #c0c0c0;
@@ -34,4 +35,12 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.navlink {
+  color: white;
+}
+
+.navlink:hover {
+  color: orange;
 }

@@ -1,14 +1,18 @@
 import React from 'react';
 import CandiesContainer from './Candies';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
 
 const Root = () => {
   return (
     <BrowserRouter>
       <div>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/candies">View Goodie Bag</Link>
+          <NavLink to="/" className="navlink">
+            Home
+          </NavLink>
+          <NavLink to="/candies" className="navlink">
+            View Goodie Bag
+          </NavLink>
         </nav>
         <main>
           <h1>Welcome to the Goodie Bag!</h1>

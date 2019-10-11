@@ -17,7 +17,7 @@ class Candies extends React.Component {
         {this.props.candies.map(candy => {
           return (
             <li key={candy.id}>
-              {candy.name}
+              <strong>{candy.name}</strong>
               <div>{candy.description}</div>
             </li>
           );
