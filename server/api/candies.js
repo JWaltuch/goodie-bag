@@ -24,7 +24,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.use('/', (req, res, next) => {
-  res.send('PAGE NOT FOUND');
+  res.send(`<h1><center>No candy exists with that ID :(<center><h1>`);
 });
 
 router.use((error, req, res, next) => {
