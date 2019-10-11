@@ -5,9 +5,17 @@ import { getSingleCandyFromDatabase } from '../reducers';
 class SingleCandy extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     this.props.getACandy(this.props.match.params.id);
+  }
+  handleClick(event) {
+    if (event.target.name === 'increase') {
+      console.log('increase');
+    } else if (event.target.name === 'decrease') {
+      console.log('decrease');
+    }
   }
 
   render() {
@@ -16,10 +24,18 @@ class SingleCandy extends React.Component {
         This is the page for your:
         <h1>{this.props.candy.name}</h1>
         <p>{this.props.candy.description}</p>
-        <button type="submit" name="increase">
+        <button
+          type="submit"
+          name="increase"
+          onClick={event => this.handleClick()}
+        >
           Get More Candy!
         </button>
-        <button type="submit" name="decrease">
+        <button
+          type="submit"
+          name="decrease"
+          onClick={event => this.handleClick()}
+        >
           Eat a Candy!
         </button>
       </div>
