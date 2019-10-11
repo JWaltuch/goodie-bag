@@ -15,7 +15,12 @@ class Candies extends React.Component {
     return (
       <ul>
         {this.props.candies.map(candy => {
-          return <li>{candy.name}</li>;
+          return (
+            <li key={candy.id}>
+              {candy.name}
+              <div>{candy.description}</div>
+            </li>
+          );
         })}
       </ul>
     );
