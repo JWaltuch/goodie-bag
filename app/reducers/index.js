@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 //action type
 const GET_CANDY = 'GET_CANDY';
 const GET_SINGLE_CANDY = 'GET_SINGLE_CANDY';
+const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 
 //action creator
 const getCandy = candies => ({
@@ -11,6 +13,14 @@ const getCandy = candies => ({
 });
 const getSingleCandy = candy => ({
   type: GET_SINGLE_CANDY,
+  candy,
+});
+const increaseQuantity = candy => ({
+  type: INCREASE_QUANTITY,
+  candy,
+});
+const decreaseQuantity = candy => ({
+  type: DECREASE_QUANTITY,
   candy,
 });
 
