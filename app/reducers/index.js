@@ -47,6 +47,21 @@ export const getSingleCandyFromDatabase = id => {
   };
 };
 
+export const changeQuantity = (type, id) => {
+  return async (dispatch, getState, { axios }) => {
+    try {
+      const { data } = await axios.put(`/api/candies/${id}/${type}`);
+      if (type === 'increase') {
+        dispatch(increaseQuantity(data));
+      } else {
+        dispatch(decreaseQuantity(data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 const initialState = { candies: [], selectedCandy: {} };
 
 const rootReducer = (state = {}, action) => {
