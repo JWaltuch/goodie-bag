@@ -12,7 +12,7 @@ class SingleCandy extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    this.props.getACandy(this.props.match.params.id, GET_SINGLE_CANDY);
+    this.props.getACandy(this.props.match.params.id);
   }
   handleClick(event) {
     if (event.target.name === 'increase') {
@@ -49,7 +49,7 @@ class SingleCandy extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getACandy: (id, type) => dispatch(getSingleCandyFromDatabase(id, type)),
+    getACandy: id => dispatch(getSingleCandyFromDatabase(id)),
   };
 };
 

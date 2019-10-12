@@ -15,13 +15,13 @@ const getSingleCandy = candy => ({
   type: GET_SINGLE_CANDY,
   candy,
 });
-const increaseQuantity = candy => ({
+const increaseQuantity = candies => ({
   type: INCREASE_QUANTITY,
-  candy,
+  candies,
 });
-const decreaseQuantity = candy => ({
+const decreaseQuantity = candies => ({
   type: DECREASE_QUANTITY,
-  candy,
+  candies,
 });
 
 //thunk creators
@@ -36,17 +36,11 @@ export const getCandyFromDatabase = () => {
   };
 };
 
-export const getSingleCandyFromDatabase = (id, type) => {
+export const getSingleCandyFromDatabase = id => {
   return async (dispatch, getState, { axios }) => {
     try {
       const { data } = await axios.get(`/api/candies/${id}`);
-      if (type === GET_SINGLE_CANDY) {
-        dispatch(getSingleCandy(data));
-      } else if (type === INCREASE_QUANTITY) {
-        dispatch(increaseQuantity(data));
-      } else if (type === DECREASE_QUANTITY) {
-        dispatch(decreaseQuantity(data));
-      }
+      dispatch(getSingleCandy(data));
     } catch (error) {
       console.log(error);
     }
@@ -63,12 +57,30 @@ const rootReducer = (state = {}, action) => {
 };
 
 const candyReducer = (state = initialState, action) => {
+  console.log(state);
   switch (action.type) {
     case GET_CANDY:
       return { ...state, candies: action.candies };
     case GET_SINGLE_CANDY:
       return { ...state, selectedCandy: action.candy };
-      return state;
+    case INCREASE_QUANTITY:
+      return {
+        ...state.candies.map(candy => {
+          if (candy.id === state.candies.selectedCandy.id) {
+            return { ...candy, quantity: candy.quantity + 1 };
+          } else {
+            return { ...candy };
+          }
+        }),
+      };
+    // case DECREASE_QUANTITY:{
+    //   return state.candies.map((candy) => {
+    //     if (candy === action.candy){
+    //       candy = {...candy, quantity = candy.quantity - 1}
+    //     } else {
+    //       return {...candy}
+    //     }
+    //    })}
     default:
       return state;
   }
