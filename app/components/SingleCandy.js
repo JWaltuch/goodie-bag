@@ -27,14 +27,14 @@ class SingleCandy extends React.Component {
         <button
           type="submit"
           name="increase"
-          onClick={event => this.handleClick()}
+          onClick={event => this.handleClick(event)}
         >
           Get More Candy!
         </button>
         <button
           type="submit"
           name="decrease"
-          onClick={event => this.handleClick()}
+          onClick={event => this.handleClick(event)}
         >
           Eat a Candy!
         </button>
