@@ -34,31 +34,34 @@ class SingleCandy extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="single-candy-container">
         This is the page for your:
+        <img src={this.props.candy.imageURL} />
         <h1>{this.props.candy.name}</h1>
         <p>{this.props.candy.description}</p>
         {(this.props.candy.quantity === undefined && (
           <p>This type of candy is all gone! Click a button and get more!</p>
         )) || <p>You have {this.props.candy.quantity} of these in your bag</p>}
-        <button
-          id="increase"
-          type="submit"
-          name="increase"
-          onClick={event => this.handleClick(event)}
-          disabled={this.props.candy.quantity === 10}
-        >
-          Get More Candy!
-        </button>
-        <button
-          id="decrease"
-          type="submit"
-          name="decrease"
-          onClick={event => this.handleClick(event)}
-          disabled={this.props.candy.quantity === 0}
-        >
-          Eat a Candy!
-        </button>
+        <div id="button-container">
+          <button
+            id="increase"
+            type="submit"
+            name="increase"
+            onClick={event => this.handleClick(event)}
+            disabled={this.props.candy.quantity === 10}
+          >
+            Get More Candy!
+          </button>
+          <button
+            id="decrease"
+            type="submit"
+            name="decrease"
+            onClick={event => this.handleClick(event)}
+            disabled={this.props.candy.quantity === 0}
+          >
+            Eat a Candy!
+          </button>
+        </div>
       </div>
     );
   }
