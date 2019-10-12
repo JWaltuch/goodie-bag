@@ -27,7 +27,7 @@ class SingleCandy extends React.Component {
     }
     if (this.props.candy.quantity === 10) {
       increaseButton.disabled = true;
-    } else if (this.props.candy.quantity === 1) {
+    } else if (this.props.candy.quantity === 0) {
       decreaseButton.disabled = true;
     }
   }
@@ -55,7 +55,7 @@ class SingleCandy extends React.Component {
           type="submit"
           name="decrease"
           onClick={event => this.handleClick(event)}
-          disabled={this.props.candy.quantity === 1}
+          disabled={this.props.candy.quantity === 0}
         >
           Eat a Candy!
         </button>
