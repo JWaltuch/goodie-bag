@@ -26,7 +26,7 @@ const decreaseQuantity = candy => ({
 
 //thunk creators
 export const getCandyFromDatabase = () => {
-  return async (dispatch, getState, { axios }) => {
+  return async (dispatch, _, { axios }) => {
     try {
       const { data } = await axios.get('/api/candies');
       dispatch(getCandy(data));
@@ -37,7 +37,7 @@ export const getCandyFromDatabase = () => {
 };
 
 export const getSingleCandyFromDatabase = id => {
-  return async (dispatch, getState, { axios }) => {
+  return async (dispatch, _, { axios }) => {
     try {
       const { data } = await axios.get(`/api/candies/${id}`);
       dispatch(getSingleCandy(data));
@@ -48,7 +48,7 @@ export const getSingleCandyFromDatabase = id => {
 };
 
 export const changeQuantity = (type, id) => {
-  return async (dispatch, getState, { axios }) => {
+  return async (dispatch, _, { axios }) => {
     try {
       const { data } = await axios.put(`/api/candies/${id}/${type}`);
       if (type === 'increase') {

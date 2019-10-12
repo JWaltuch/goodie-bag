@@ -15,13 +15,20 @@ class SingleCandy extends React.Component {
     this.props.getACandy(this.props.match.params.id);
   }
   handleClick(event) {
-    let button = event.target;
-    if (this.props.candy.quantity === 10 && button.name === 'increase') {
-      button.disabled = true;
-    } else if (this.props.candy.quantity === 1 && button.name === 'decrease') {
-      button.disabled = true;
-    } else {
-      this.props.changeCandyQuantity(button.name, this.props.match.params.id);
+    let increaseButton = document.getElementById('increase');
+    let decreaseButton = document.getElementById('decrease');
+    if (!event.target.disabled) {
+      this.props.changeCandyQuantity(
+        event.target.name,
+        this.props.match.params.id
+      );
+      increaseButton.removeAttribute('disabled');
+      decreaseButton.removeAttribute('disabled');
+    }
+    if (this.props.candy.quantity === 10) {
+      increaseButton.disabled = true;
+    } else if (this.props.candy.quantity === 1) {
+      decreaseButton.disabled = true;
     }
   }
 
@@ -39,6 +46,7 @@ class SingleCandy extends React.Component {
           type="submit"
           name="increase"
           onClick={event => this.handleClick(event)}
+          disabled={this.props.candy.quantity === 10}
         >
           Get More Candy!
         </button>
@@ -47,6 +55,7 @@ class SingleCandy extends React.Component {
           type="submit"
           name="decrease"
           onClick={event => this.handleClick(event)}
+          disabled={this.props.candy.quantity === 1}
         >
           Eat a Candy!
         </button>

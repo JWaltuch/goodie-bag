@@ -12,6 +12,6 @@ module.exports = db.define('candy', {
     allowNull: false,
     validate: { notEmpty: true },
   },
-  quantity: { type: Sequelize.INTEGER, validate: { min: 1, max: 10 } },
+  quantity: { type: Sequelize.INTEGER, validate: { min: 0, max: 10 } },
   imageURL: { type: Sequelize.STRING, defaultValue: '' },
 });

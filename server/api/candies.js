@@ -26,12 +26,12 @@ router.get('/:id', async (req, res, next) => {
 router.put('/:id/increase', async (req, res, next) => {
   try {
     const candyInstance = await Candy.findById(req.params.id);
-    const updatedCandy = await Candy.update(
+    const [, updatedCandy] = await Candy.update(
       { quantity: candyInstance.quantity + 1 },
       { where: { id: req.params.id }, returning: true, plain: true }
     );
     //FIX THE HARD CODING
-    res.json(updatedCandy[1]);
+    res.json(updatedCandy);
   } catch (error) {
     next(error);
   }
@@ -40,11 +40,11 @@ router.put('/:id/increase', async (req, res, next) => {
 router.put('/:id/decrease', async (req, res, next) => {
   try {
     const candyInstance = await Candy.findById(req.params.id);
-    const updatedCandy = await Candy.update(
+    const [, updatedCandy] = await Candy.update(
       { quantity: candyInstance.quantity - 1 },
       { where: { id: req.params.id }, returning: true, plain: true }
     );
-    res.json(updatedCandy[1]);
+    res.json(updatedCandy);
   } catch (error) {
     next(error);
   }
