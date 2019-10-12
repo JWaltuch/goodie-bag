@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
-//action type
+//action types
 const GET_CANDY = 'GET_CANDY';
 const GET_SINGLE_CANDY = 'GET_SINGLE_CANDY';
 const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
 const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 
-//action creator
+//action creators
 const getCandy = candies => ({
   type: GET_CANDY,
   candies,
@@ -24,7 +24,7 @@ const decreaseQuantity = candy => ({
   candy,
 });
 
-//thunk creator
+//thunk creators
 export const getCandyFromDatabase = () => {
   return async (dispatch, getState, { axios }) => {
     try {
@@ -36,11 +36,17 @@ export const getCandyFromDatabase = () => {
   };
 };
 
-export const getSingleCandyFromDatabase = id => {
+export const getSingleCandyFromDatabase = (id, type) => {
   return async (dispatch, getState, { axios }) => {
     try {
       const { data } = await axios.get(`/api/candies/${id}`);
-      dispatch(getSingleCandy(data));
+      if (type === GET_SINGLE_CANDY) {
+        dispatch(getSingleCandy(data));
+      } else if (type === INCREASE_QUANTITY) {
+        dispatch(increaseQuantity(data));
+      } else if (type === DECREASE_QUANTITY) {
+        dispatch(decreaseQuantity(data));
+      }
     } catch (error) {
       console.log(error);
     }

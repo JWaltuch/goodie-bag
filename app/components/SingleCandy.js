@@ -2,13 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getSingleCandyFromDatabase } from '../reducers';
 
+const GET_SINGLE_CANDY = 'GET_SINGLE_CANDY';
+const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
+
 class SingleCandy extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    this.props.getACandy(this.props.match.params.id);
+    this.props.getACandy(this.props.match.params.id, GET_SINGLE_CANDY);
   }
   handleClick(event) {
     if (event.target.name === 'increase') {
@@ -45,7 +49,7 @@ class SingleCandy extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getACandy: id => dispatch(getSingleCandyFromDatabase(id)),
+    getACandy: (id, type) => dispatch(getSingleCandyFromDatabase(id, type)),
   };
 };
 
