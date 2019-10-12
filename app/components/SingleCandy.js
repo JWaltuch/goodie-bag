@@ -27,7 +27,9 @@ class SingleCandy extends React.Component {
         This is the page for your:
         <h1>{this.props.candy.name}</h1>
         <p>{this.props.candy.description}</p>
-        <p>You have {this.props.candy.quantity} of these in your bag</p>
+        {(this.props.candy.quantity === undefined && (
+          <p>This type of candy is all gone! Click a button and get more!</p>
+        )) || <p>You have {this.props.candy.quantity} of these in your bag</p>}
         <button
           type="submit"
           name="increase"
