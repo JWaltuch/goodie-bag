@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSingleCandyFromDatabase } from '../reducers';
+import { getSingleCandyFromDatabase, changeQuantity } from '../reducers';
 
 const GET_SINGLE_CANDY = 'GET_SINGLE_CANDY';
 const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
@@ -15,11 +15,10 @@ class SingleCandy extends React.Component {
     this.props.getACandy(this.props.match.params.id);
   }
   handleClick(event) {
-    if (event.target.name === 'increase') {
-      console.log('increase');
-    } else if (event.target.name === 'decrease') {
-      console.log('decrease');
-    }
+    this.props.changeCandyQuantity(
+      event.target.name,
+      this.props.match.params.id
+    );
   }
 
   render() {
@@ -28,6 +27,7 @@ class SingleCandy extends React.Component {
         This is the page for your:
         <h1>{this.props.candy.name}</h1>
         <p>{this.props.candy.description}</p>
+        <p>You have {this.props.candy.quantity} of these in your bag</p>
         <button
           type="submit"
           name="increase"
@@ -50,6 +50,7 @@ class SingleCandy extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     getACandy: id => dispatch(getSingleCandyFromDatabase(id)),
+    changeCandyQuantity: (type, id) => dispatch(changeQuantity(type, id)),
   };
 };
 

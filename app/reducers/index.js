@@ -15,13 +15,13 @@ const getSingleCandy = candy => ({
   type: GET_SINGLE_CANDY,
   candy,
 });
-const increaseQuantity = candies => ({
+const increaseQuantity = candy => ({
   type: INCREASE_QUANTITY,
-  candies,
+  candy,
 });
-const decreaseQuantity = candies => ({
+const decreaseQuantity = candy => ({
   type: DECREASE_QUANTITY,
-  candies,
+  candy,
 });
 
 //thunk creators
@@ -72,30 +72,15 @@ const rootReducer = (state = {}, action) => {
 };
 
 const candyReducer = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case GET_CANDY:
       return { ...state, candies: action.candies };
     case GET_SINGLE_CANDY:
       return { ...state, selectedCandy: action.candy };
     case INCREASE_QUANTITY:
-      return {
-        ...state.candies.map(candy => {
-          if (candy.id === state.candies.selectedCandy.id) {
-            return { ...candy, quantity: candy.quantity + 1 };
-          } else {
-            return { ...candy };
-          }
-        }),
-      };
-    // case DECREASE_QUANTITY:{
-    //   return state.candies.map((candy) => {
-    //     if (candy === action.candy){
-    //       candy = {...candy, quantity = candy.quantity - 1}
-    //     } else {
-    //       return {...candy}
-    //     }
-    //    })}
+      return { ...state, selectedCandy: action.candy };
+    case DECREASE_QUANTITY:
+      return { ...state, selectedCandy: action.candy };
     default:
       return state;
   }
