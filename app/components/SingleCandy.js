@@ -2,10 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getSingleCandyFromDatabase, changeQuantity } from '../reducers';
 
-const GET_SINGLE_CANDY = 'GET_SINGLE_CANDY';
-const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
-const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
-
 class SingleCandy extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +29,7 @@ class SingleCandy extends React.Component {
   }
 
   render() {
+    console.log(this.props.candy);
     return (
       <div id="single-candy-container">
         This is the page for your:

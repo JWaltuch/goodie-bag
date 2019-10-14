@@ -39,6 +39,15 @@ export const getCandyFromDatabase = () => {
 export const getSingleCandyFromDatabase = id => {
   return async (dispatch, _, { axios }) => {
     try {
+      const placeholderWhileLoading = {
+        id: 0,
+        name: 'Loading',
+        description: 'Loading...',
+        quantity: 0,
+        imageURL:
+          'https://3wga6448744j404mpt11pbx4-wpengine.netdna-ssl.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif',
+      };
+      dispatch(getSingleCandy(placeholderWhileLoading));
       const { data } = await axios.get(`/api/candies/${id}`);
       dispatch(getSingleCandy(data));
     } catch (error) {
