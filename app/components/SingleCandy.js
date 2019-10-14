@@ -29,7 +29,6 @@ class SingleCandy extends React.Component {
   }
 
   render() {
-    console.log(this.props.candy);
     return (
       <div id="single-candy-container">
         This is the page for your:
